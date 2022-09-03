@@ -19,6 +19,20 @@ exports.getUsers = asyncHandler(async (req, res, next) => {
   });
 });
 
+exports.getUserByAddress = asyncHandler(async (req, res, next) => {
+  const user = await User.find({
+    walletAddress: req.params.address,
+  });
+
+  if (!user) {
+    return next(new ErrorResponse(`No User founders`, 404));
+  }
+  res.status(201).json({
+    success: true,
+    data: user,
+  });
+});
+
 // @desc          Get All Bootcamps
 // @route         GET /api/v1/bootcamps
 // @access        Public

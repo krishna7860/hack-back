@@ -6,6 +6,7 @@ const colors = require("colors");
 const fileUpload = require("express-fileupload");
 const errorHandler = require("./middleware/error");
 const connect = require("./config/db");
+const cors = require("cors");
 
 // Load environment variables
 env.config({ path: "./config/config.env" });
@@ -19,6 +20,8 @@ const users = require("./routes/user");
 const app = express();
 
 app.use(express.json());
+app.use(cors());
+
 // Dev Logging middleware
 process.env.NODE_ENV === "development" ? app.use(morgan("dev")) : null;
 

@@ -7,6 +7,7 @@ const {
   deleteUser,
   userPhotoUpload,
   createUser,
+  getUserByAddress,
 } = require("../controller/bootcamp");
 
 const router = express.Router();
@@ -19,5 +20,6 @@ router.route("/").get(getUsers).post(createUser);
 router.route("/rolls").get(getAllTopSkills);
 
 router.route("/:id").get(getUser).put(updateUser).delete(deleteUser);
+router.route("/address/:address").get(getUserByAddress);
 
 module.exports = router;

@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
-    unique: true,
     trim: true,
     maxlength: [50, "Name cannot be more than 50 Characters"],
   },
-  walletAddress: String,
+
+  walletAddress: { type: String, unique: true },
   bio: {
     type: String,
     maxlength: [500, "Name cannot be more than 50 Characters"],
